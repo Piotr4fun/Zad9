@@ -1,6 +1,6 @@
-import os,sys,json,math,random,datetime as dt
+import json
+import random
 from collections import *
-from pathlib import Path
 
 TENANT_DATA = {"a":1,"b":2,"c":3}
 config={"currency":"PLN","tax":0.23,"late_fee":50}
@@ -43,7 +43,7 @@ class RentManager:
             total = total - (total*discount)
         if month == 2 and year % 4 == 0:
             total=total+1
-        if total is 0:
+        if total == 0:
             print("weird")
         self.history.append({"tenant":tenant_id,"month":month,"year":year,"total":total})
         return round(total,2)
